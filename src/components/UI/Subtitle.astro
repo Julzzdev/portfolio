@@ -1,0 +1,22 @@
+---
+interface Props {
+  title: string;
+  color: "blue" | "purple";
+  icon: "Zap" | "Portfolio";
+}
+
+const { title, color, icon } = Astro.props as Props;
+
+import { icons } from "../icons";
+const IconComponent = icons[icon];
+
+const colorVariants = {
+  blue: "text-blue-700 dark:text-blue-300",
+  purple: "text-purple-700 dark:text-purple-300",
+};
+---
+
+<h3 class:list={[`font-bold ${colorVariants[color]} flex items-center gap-2`]}>
+  <IconComponent class={`text-${color}-500`} />
+  {title}
+</h3>

@@ -1,0 +1,123 @@
+---
+import Card from "../components/UI/Card.astro";
+import MainCard from "../components/UI/MainCard.astro";
+import Subtitle from "../components/UI/Subtitle.astro";
+import Layout from "../layouts/Layout.astro";
+import portfolio from "../data/portfolio.json";
+import Badge from "../components/UI/Badge.astro";
+
+import { ValidColors } from "../types";
+---
+
+<Layout>
+  <div class="max-w-6xl mx-auto px-6 prose">
+    <MainCard>
+      <div class="p-8 md:p-10 lg:p-12">
+        <div class="flex flex-col md:flex-row gap-8">
+          <!-- Left Column - Headline -->
+          <div class="md:w-1/3">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+              Julio Olvera
+            </h2>
+            <p
+              class="text-xl text-blue-600 dark:text-blue-400 font-medium mb-4"
+            >
+              Computer Engineer
+              <span class="text-gray-400 dark:text-gray-300">|</span> Fullstack web
+              developer
+            </p>
+
+            <div
+              class="prose prose-sm dark:prose-invert text-gray-600 dark:text-gray-300"
+            >
+              <p>
+                <span class="font-semibold">Specializing in:</span><br />
+                • Enterprise System Architecture<br />
+                • High-Traffic Backend Development<br />
+                • Scalable architecture<br />
+                • Data-Intensive Applications<br />
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column - Content -->
+          <div
+            class="md:w-2/3 space-y-6 border-t md:border-t-0 md:border-l border-gray-200 dark:border-gray-700 md:pl-8 pt-6 md:pt-0"
+          >
+            <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+              I don't just write code—I <span
+                class="font-semibold text-purple-600 dark:text-purple-400"
+                >engineer digital ecosystems</span
+              >. With a Computer Engineering degree and <span
+                class="underline decoration-blue-300">5+ years</span
+              > of experience, I build bridges between complex business needs and
+              elegant technical solutions.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card color="blue">
+                <Subtitle title="My craft" color="blue" icon="Zap" />
+                <ul
+                  class="mt-2 space-y-1 text-sm text-gray-600 dark:text-gray-300"
+                >
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-500">✓</span>
+                    <span
+                      ><strong
+                        class="font-semibold text-purple-600 dark:text-purple-400"
+                        >Full-stack developer</strong
+                      > building scalable solutions with React & Node.js</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-500">✓</span>
+                    <span
+                      ><strong
+                        class="font-semibold text-purple-600 dark:text-purple-400"
+                        >Detail-oriented</strong
+                      > coder following best practices for performance & accessibility</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-500">✓</span>
+                    <span
+                      >Deliver <strong
+                        class="font-semibold text-purple-600 dark:text-purple-400"
+                        >client-aligned</strong
+                      >, intuitive products</span
+                    >
+                  </li>
+                </ul>
+              </Card>
+
+              <Card color="purple">
+                <Subtitle title="My stack" color="purple" icon="Zap" />
+                <div class="mt-2 flex flex-wrap gap-2">
+                  {
+                    portfolio.about.techStack.map((stack) => {
+                      const color = Object.values(ValidColors).includes(
+                        stack.color as ValidColors
+                      )
+                        ? stack.color
+                        : ValidColors.Blue;
+
+                      return (
+                        <Badge color={color as ValidColors} text={stack.name} />
+                      );
+                    })
+                  }
+                </div>
+              </Card>
+            </div>
+
+            <div class="pt-4">
+              <p class="text-gray-700 dark:text-gray-300 italic">
+                "I build solutions as diverse as the teams I work with."
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </MainCard>
+  </div>
+</Layout>

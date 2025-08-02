@@ -1,0 +1,16 @@
+---
+interface Props {
+  color: "blue" | "purple";
+}
+
+const { color } = Astro.props as Props;
+
+const colorVariants = {
+  blue: "bg-blue-50 dark:bg-blue-900/20",
+  purple: "bg-purple-50 dark:bg-purple-900/20",
+};
+---
+
+<div class=` ${colorVariants[color]} p-4 rounded-lg`>
+  <slot />
+</div>
