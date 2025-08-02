@@ -3,10 +3,60 @@ import Card from "../components/UI/Card.astro";
 import MainCard from "../components/UI/MainCard.astro";
 import Subtitle from "../components/UI/Subtitle.astro";
 import Layout from "../layouts/Layout.astro";
-import portfolio from "../data/portfolio.json";
 import Badge from "../components/UI/Badge.astro";
 
 import { ValidColors } from "../types";
+
+const techStack = [
+  {
+    name: "JavaScript",
+    color: "yellow",
+  },
+  {
+    name: "TypeScript",
+    color: "blue",
+  },
+  {
+    name: "Node.js",
+    color: "green",
+  },
+  {
+    name: "MySQL",
+    color: "indigo",
+  },
+  {
+    name: "PostgreSQL",
+    color: "blue",
+  },
+  {
+    name: "MongoDB",
+    color: "lime",
+  },
+  {
+    name: "NestJS",
+    color: "red",
+  },
+  {
+    name: "ExpressJS",
+    color: "green",
+  },
+  {
+    name: "Astro",
+    color: "rose",
+  },
+  {
+    name: "React",
+    color: "sky",
+  },
+  {
+    name: "GraphQL",
+    color: "violet",
+  },
+  {
+    name: "AWS",
+    color: "yellow",
+  },
+];
 ---
 
 <Layout>
@@ -94,7 +144,7 @@ import { ValidColors } from "../types";
                 <Subtitle title="My stack" color="purple" icon="Zap" />
                 <div class="mt-2 flex flex-wrap gap-2">
                   {
-                    portfolio.about.techStack.map((stack) => {
+                    techStack.map((stack) => {
                       const color = Object.values(ValidColors).includes(
                         stack.color as ValidColors
                       )
